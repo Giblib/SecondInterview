@@ -1,6 +1,6 @@
-///////////////////////
-// Hostmachine model //
-///////////////////////
+////////////////
+// User model //
+////////////////
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
