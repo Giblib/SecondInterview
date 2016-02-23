@@ -15,9 +15,9 @@ Build the front end to the application in this repo. Requirements are below, and
 - Ability to post comments on the authenticated page. Just list all comments and have a text field that posts comments.
 
 ## Hints
-- Use `npm start` to start the express application.
+- Use `npm start` to start the express application. It will be bound to port 8080 by default.
 - If you're using Windows, why are you using windows? You're gonna have it rough with bcrypt.
-- Authentication can be tested by sending a POST request to http://[SOME_HOST_PROBABLY_LOCALHOST]/api/v1/authenticate
+- Authentication can be tested by sending a POST request to http://[SOME_HOST_PROBABLY_LOCALHOST]:8080/api/v1/authenticate
 - You will be sharing the database with all other candidates. This means you might see comments you didn't create. User authentication for mongodb is disabled, and host information is hardcoded in config/config.js.
 - Your front end code goes in '/public'.
 
