@@ -45,9 +45,9 @@ var UserSchema = new Schema({
         required: true
     },
 
-//////////////////////
-// Timestamp Fields //
-//////////////////////
+    //////////////////////
+    // Timestamp Fields //
+    //////////////////////
 
     created: {
         type: Date,
