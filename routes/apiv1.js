@@ -23,6 +23,8 @@ module.exports = function (Models, router) {
         }
     });
 
+    // Just a helper route to seed. No need to ever run this again.
+
     router.get('/seed', function (req, res) {
         User.find({username: 'test'})
             .exec(function (err, data) {
