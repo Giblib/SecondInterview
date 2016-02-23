@@ -15,7 +15,7 @@ Build the front end to the application in this repo. Requirements are below, and
 ## Hints
 - If you're using Windows, why are you using windows? You're gonna have it rough with bcrypt.
 - Authentication can be tested by sending a POST request to http://[SOME_HOST_PROBABLY_LOCALHOST]/api/v1/authenticate
-- You will be sharing the database with all other candidates. This means you might see comments you didn't create. User authentication for mongodb is disabled.
+- You will be sharing the database with all other candidates. This means you might see comments you didn't create. User authentication for mongodb is disabled, and host information is hardcoded in config/config.js.
 - Your front end code goes in '/public'.
 
 ## Bugs
