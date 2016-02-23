@@ -1,6 +1,6 @@
 # Second Round Interview Test Project
 
-# DO NOT COMMIT TO MASTER, CREATE A NEW BRANCH. IF YOU COMMIT TO MASTER, YOU FAIL AUTOMATICALLY. WHEN YOU ARE FINISHED SUBMIT A PULL REQUEST.
+# CREATE A NEW BRANCH. WHEN YOU ARE FINISHED SUBMIT A PULL REQUEST.
 
 ## Why another test project?
 If you've made it this far, then you've passed the first coding test, which showed that you are familiar with AngularJS. Now, we need to make sure that you can work in the environment that our product is built in.
