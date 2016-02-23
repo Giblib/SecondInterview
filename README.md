@@ -9,7 +9,7 @@ If you've made it this far, then you've passed the first coding test, which show
 Build the front end to the application in this repo. Requirements are below, and design is unimportant, just use Bootstrap defaults. Function is everything in this test. If you are unfamiliar with JWTs, take some time and review middleware/auth.js.
 
 ## Requirements
-- Use angular, ui.router, and ui.Bootstrap. Anything else you want to use is up to you, however you will be scrutinized on your choices.
+- Use angular, ui.router, and ui.Bootstrap. Anything else you want to use is up to you, however your choices will be scrutinized.
 - Front end stateless user authentication using JWTs.
 - Separate pages for authenticated and non-authenticated users.
 - Ability to post comments on the authenticated page. Just list all comments and have a text field that posts comments.
