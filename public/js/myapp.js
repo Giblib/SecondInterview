@@ -8,7 +8,7 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/home', {
+      .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'MainController',
         controllerAs: 'vm'

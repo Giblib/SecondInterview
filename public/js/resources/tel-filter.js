@@ -15,7 +15,7 @@ Credits:
 (function() {
 'use strict';
 
-angular.module('app')
+angular.module('myapp')
   .directive('phoneInput', function($filter, $browser) {
   return {
     require: 'ngModel',

@@ -22,8 +22,6 @@ GibLibAuth.prototype.authenticate = function() {
             username: typeof req.body.username != 'undefined' ? req.body.username : typeof req.query.username != 'undefined' ? req.query.username : false,
             password: typeof req.body.password != 'undefined' ? req.body.password : typeof req.query.password != 'undefined' ? req.query.password : false
         };
-        // testing username and password
-        console.log("user",user.username, user.password);
 
         if(!user.username || !user.password) {
 
@@ -31,11 +29,17 @@ GibLibAuth.prototype.authenticate = function() {
                 status: 'error',
                 message: 'Authentication error. Username and Password are required.'
             });
-
         }
+
         User.findOne({username: user.username }, function(err, obj) {
-            //testing obj is "null"
-            console.log(obj);
+            // no err or obj generated when user enters a bad username and password
+            if(!err && !obj) {
+                return res.status(403).send({
+                    status: 'error',
+                    message: 'Authentication error. Not authorized.'
+                });
+            }
+
             if(obj.username !== null) {
                 obj.compass(user.password, function(err, match) {
                     if(err || !match) {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myapp">
 <head>
   <meta charset="UTF-8">
   <title>GIBLIB: Second Interview</title>
@@ -9,10 +9,106 @@
   <script src="https://code.angularjs.org/1.4.8/angular-route.min.js"></script>
   <script src="https://code.angularjs.org/1.4.8/angular-cookies.min.js"></script>
   <script src="js/myapp.js"></script>
-
+  <script src="js/main-controller.js"></script>
+  <!-- <script src="js/resources/todo-resource.js"></script> -->
+  <!-- <script src="js/resources/state-resource.js"></script> -->
+  <script src="js/resources/tel-filter.js"></script>
+  <style>
+    body{
+      background:
+        radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, 0.26)),
+        linear-gradient(108deg, #26D0CE, #1A2980 90%);
+    }
+    .outset {
+      border-style: outset;
+      width: 50vw;
+    }
+    #message {
+      height: 20vh;
+    }
+  </style>
 </head>
-<body>
-  <h1>GIBLIB: Second Interview</h1>
-  <h2>version control 0.01</h2>
+<body class="" ng-controller="MainController as vm">
+  <!--Navbar -->
+  <div class="container">
+    <div class="header">
+      <div class="navbar navbar-inverse nav-pills pull-right" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" >Angular Boilerplate</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+            <!-- menu options only when loggedin -->
+            <ul class="nav navbar-nav" ng-show="vm.isLoggedIn">
+              <li><a ng-href="#/home">Home</a></li>
+              <li><a ng-href="#/messages">Messages</a></li>
+              <li><a ng-href="/logout">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--navbar container -->
+
+  <!-- jumbotron -->
+  <div class="jumbotron text-center" ng-hide="vm.isLoggedIn">
+    <h1>GIBLIB: Second Interview</h1>
+    <h2>version control 0.02</h2>
+  </div>
+  <!-- jumbotron -->
+
+  <!-- Login Screen-->
+  <div class="well col-md-6 col-md-offset-3" ng-hide="vm.isLoggedIn">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="page-header"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> /SIGN IN</h1>
+        <p>DEMO Username: <strong>demo</strong> ,Password: <strong>1234</strong></p>
+        <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
+          <span ng-bind="vm.loginerror" class="locked" style="color:#ff0000;"></span>
+          <div class="form-group">
+            <label>User Name</label>
+            <input type="text" name="user" placeholder="username" class="form-control" ng-model="vm.user.username" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="password" class="form-control" ng-model="vm.user.password" required>
+          </div>
+          <div>
+            <button class="btn btn-inverse btn-lg btn-login" type="submit">
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <br>
+  </div>
+  <!-- Login Screen -->
+
+  <!-- views -->
+  <div class="container">
+  <div ng-view></div>
+  </div>
+  <!-- views -->
+
+  <!-- Footer -->
+  <br>
+  <div class="footer">
+    <div class="container text-center">
+      <p>Made with <span class="glyphicon glyphicon-heart" style="color:red;"></span> from Joey Lin</p>
+    </div>
+  </div>
+  <!-- Footer -->
+
 </body>
 </html>
