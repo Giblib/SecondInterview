@@ -10,7 +10,7 @@
   <script src="https://code.angularjs.org/1.4.8/angular-cookies.min.js"></script>
   <script src="js/myapp.js"></script>
   <script src="js/main-controller.js"></script>
-  <!-- <script src="js/resources/todo-resource.js"></script> -->
+  <script src="js/resources/todo-resource.js"></script>
   <!-- <script src="js/resources/state-resource.js"></script> -->
   <script src="js/resources/tel-filter.js"></script>
   <style>
@@ -43,15 +43,15 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" >Angular Boilerplate</a>
+            <a class="navbar-brand" >GIBLIB</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
             <!-- menu options only when loggedin -->
             <ul class="nav navbar-nav" ng-show="vm.isLoggedIn">
-              <li><a ng-href="#/home">Home</a></li>
+              <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/messages">Messages</a></li>
-              <li><a ng-href="/logout">Logout</a></li>
+              <li><a ng-href="/" ng-click="vm.logout()">Logout</a></li>
             </ul>
           </div>
         </div>
@@ -63,7 +63,7 @@
   <!-- jumbotron -->
   <div class="jumbotron text-center" ng-hide="vm.isLoggedIn">
     <h1>GIBLIB: Second Interview</h1>
-    <h2>version control 0.02</h2>
+    <h2>version control 0.03</h2>
   </div>
   <!-- jumbotron -->
 
@@ -72,7 +72,7 @@
     <div class="row">
       <div class="col-sm-12">
         <h1 class="page-header"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> /SIGN IN</h1>
-        <p>DEMO Username: <strong>demo</strong> ,Password: <strong>1234</strong></p>
+        <p>DEMO Username: <strong>test</strong> ,Password: <strong>test</strong></p>
         <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
           <span ng-bind="vm.loginerror" class="locked" style="color:#ff0000;"></span>
           <div class="form-group">

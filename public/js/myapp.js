@@ -19,6 +19,9 @@ angular
         controllerAs: 'vm'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/',
+        templateUrl: 'views/about.html',
+        controller: 'MainController',
+        controllerAs: 'vm'
       });
   });

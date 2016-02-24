@@ -1,15 +1,14 @@
-// (function() {
-// 'use strict';
+(function() {
+'use strict';
 
-// angular.module('myapp')
-//   .factory('Todo', Todo);
+angular.module('myapp')
+  .factory('Todo', Todo);
 
-//   Todo.$inject = ['$resource'];
+  Todo.$inject = ['$resource'];
 
-//   function Todo($resource) {
-//     var TodoResource = $resource('/read',{},{});
-//     return TodoResource;
+  function Todo($resource) {
+    var TodoResource = $resource('api/v1/comments',{},{});
+    return TodoResource;
+  }
 
-//   }
-
-// })();
+})();

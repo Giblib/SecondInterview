@@ -1,5 +1,7 @@
 module.exports = function (Models, router) {
     var User = Models.User;
+    //adding models.comment
+    var Comment = Models.Comment;
 
     router.get('/comments', function (req, res) {
         var query = {};

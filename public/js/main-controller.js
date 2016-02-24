@@ -4,15 +4,17 @@
 angular.module('myapp')
   .controller('MainController', MainController);
 
-MainController.$inject = ['Todo', 'State', '$http', '$cookies', '$location'];
-MainController.$inject = ['$http', '$cookies', '$location'];
+// MainController.$inject = ['Todo', 'State', '$http', '$cookies', '$location'];
+MainController.$inject = ['Todo','$http', '$cookies', '$location'];
 
-function MainController( $http, $cookies, $location) {
+function MainController( Todo, $http, $cookies, $location) {
   var vm = this;
-  vm.selState = '';
-  vm.isLoggedIn = false;
 
-
+  /*
+    check for token in localstorage, if token exist send to about page
+    or set vm.isLoggedIn to false
+  */
+  vm.isLoggedIn = localStorage.token || false;
 
   // User Authentication
   vm.login = function(form) {
@@ -25,9 +27,8 @@ function MainController( $http, $cookies, $location) {
         method: 'POST',
         data: params})
     .success(function(response) {
-        console.log(response);
+        // Set JWT to localStorage as token and redirect to about page
         if (response.status === "success") {
-          // Set JWT to localStorage as token and redirect to about page
           localStorage.setItem("token", response.token);
           vm.isLoggedIn = true;
           $location.path('/about');
@@ -40,14 +41,21 @@ function MainController( $http, $cookies, $location) {
 
   };
 
-  // // read messages
-  // vm.readMessages = function() {
-  //   Todo.query()
-  //    .$promise.then(function (all) {
-  //      vm.messages = all;
-  //    });
-  // };
-  // vm.readMessages();
+  // User Logout
+  vm.logout = function() {
+    localStorage.removeItem("token");
+    vm.isLoggedIn = false;
+  }
+
+  // read messages
+  vm.readMessages = function() {
+    Todo.query()
+     .$promise.then(function (data) {
+       console.log(data);
+       vm.messages = data;
+     });
+  }
+  vm.readMessages();
 
 
 
