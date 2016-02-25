@@ -1,0 +1,32 @@
+<!-- READ/WRITE COMMENTS -->
+<div class="container well">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <h1 class="page-header"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> /COMMENTS</h1>
+      <ul id="comment" class="nav nav-tabs nav-stacked col-sm-4 col-md-4 col-lg-4" ng-repeat="comment in vm.comments">
+        <li><a>Date: <strong>{{comment.modified | date:"MM/dd/yyyy 'at' h:mma" }}</strong><br>
+               Comment: <strong>{{comment.text}}</strong><br></a></li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <br>
+  <div class="container outset">
+    <h3 class="text-center">New Comment</h3>
+    <form class="form-horizontal" role="form" name="comment" ng-submit="comment.$valid && vm.addComment()" novalidate>
+      <div class="form-group">
+        <label class="control-label col-md-2" for="comment">Comment:</label>
+        <div class="col-md-9">
+          <textarea type="text" class="form-control" id="msg" placeholder="Enter comment here..." rows="5" ng-model="vm.newComment" ng-required="true"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-2 col-md-offset-2">
+          <button type="submit" class="btn btn-primary" ng-disabled="!comment.$valid">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<hr>
+<!-- READ/WRITE COMMENTS -->

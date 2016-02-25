@@ -11,8 +11,6 @@
   <script src="js/myapp.js"></script>
   <script src="js/main-controller.js"></script>
   <script src="js/resources/todo-resource.js"></script>
-  <!-- <script src="js/resources/state-resource.js"></script> -->
-  <script src="js/resources/tel-filter.js"></script>
   <style>
     body{
       background:
@@ -23,8 +21,8 @@
       border-style: outset;
       width: 50vw;
     }
-    #message {
-      height: 20vh;
+    #comment {
+      height: 25vh;
     }
   </style>
 </head>
@@ -50,7 +48,7 @@
             <!-- menu options only when loggedin -->
             <ul class="nav navbar-nav" ng-show="vm.isLoggedIn">
               <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/messages">Messages</a></li>
+              <li><a ng-href="#/comments">Messages</a></li>
               <li><a ng-href="/" ng-click="vm.logout()">Logout</a></li>
             </ul>
           </div>

@@ -13,8 +13,8 @@ angular
         controller: 'MainController',
         controllerAs: 'vm'
       })
-      .when('/messages', {
-        templateUrl: 'views/messages.html',
+      .when('/comments', {
+        templateUrl: 'views/comments.html',
         controller: 'MainController',
         controllerAs: 'vm'
       })
