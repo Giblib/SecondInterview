@@ -4,7 +4,8 @@ angular
   .module('myapp', [
     'ngResource',
     'ngRoute',
-    'ngCookies'
+    'ngAnimate',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider

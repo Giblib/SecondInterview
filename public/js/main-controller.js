@@ -4,9 +4,9 @@
   angular.module('myapp')
    .controller('MainController', MainController);
 
-  MainController.$inject = ['Todo','$http', '$cookies', '$location', '$scope'];
+  MainController.$inject = ['Todo','$http', '$location', '$scope'];
 
-  function MainController( Todo, $http, $cookies, $location, $scope) {
+  function MainController( Todo, $http, $location, $scope) {
     var vm = this;
     vm.newComment = [];
 
