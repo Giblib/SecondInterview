@@ -15,9 +15,9 @@
     <h3 class="text-center">New Comment</h3>
     <form class="form-horizontal" role="form" name="comment" ng-submit="comment.$valid && vm.addComment()" novalidate>
       <div class="form-group">
-        <label class="control-label col-md-2" for="comment">Comment:</label>
+        <label class="control-label col-md-2" for="comment">Comment:<br><br>{{ vm.newComment.length || 0 }} / 255 characters</label>
         <div class="col-md-9">
-          <textarea type="text" class="form-control" id="msg" placeholder="Enter comment here..." rows="5" ng-model="vm.newComment" ng-required="true"></textarea>
+          <textarea type="text" class="form-control" id="msg" placeholder="Enter comment here..." rows="5" ng-model="vm.newComment" ng-maxlength="255" ng-required="true"></textarea>
         </div>
       </div>
       <div class="form-group">

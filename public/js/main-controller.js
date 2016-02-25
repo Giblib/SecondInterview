@@ -4,11 +4,11 @@
   angular.module('myapp')
    .controller('MainController', MainController);
 
-  // MainController.$inject = ['Todo', 'State', '$http', '$cookies', '$location'];
-  MainController.$inject = ['Todo','$http', '$cookies', '$location'];
+  MainController.$inject = ['Todo','$http', '$cookies', '$location', '$scope'];
 
-  function MainController( Todo, $http, $cookies, $location) {
+  function MainController( Todo, $http, $cookies, $location, $scope) {
     var vm = this;
+    vm.newComment = [];
 
     /*
       check for token in localstorage, if token exist send to about page
@@ -41,7 +41,7 @@
 
     };
 
-    // User Logout
+    // User Logout - remove token from localstorage
     vm.logout = function() {
       localStorage.removeItem("token");
       vm.isLoggedIn = false;
@@ -55,8 +55,6 @@
        });
     }
     vm.readComments();
-
-
 
     // Add comment click handler
     vm.addComment = function() {
