@@ -1,19 +1,5 @@
   angular.module('myapp').controller('UICtrl', function ($scope, $uibModal, $log, $window) {
 
-    /*
-      MODAL IMPLMENTATION
-    */
-
-    $scope.open = function (size) {
-
-        var modalInstance = $uibModal.open({
-          animation: true,
-          templateUrl: 'myModalContent.html',
-          controller: 'ModalInstanceCtrl',
-          size: size
-        });
-
-    };
 
     /*
       CAROUSEL IMPLMENTATION
@@ -27,7 +13,6 @@
       var newWidth = $window.innerWidth + slides.length + 1;
       slides.push({
         image: 'http://lorempixel.com/' + newWidth + '/' + $window.innerHeight,
-        // text: ['View for non-authenticated user','Awesome photograph','That is so cool','I love that'][slides.length % 4],
         text: 'View for non-authenticated user',
         id: currIndex++
       });
@@ -73,19 +58,4 @@
 
       return array;
     }
-  });
-
-  // Please note that $uibModalInstance represents a modal window (instance) dependency.
-  // It is not the same as the $uibModal service used above.
-
-  angular.module('myapp').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
-
-
-    $scope.ok = function () {
-      $uibModalInstance.close();
-    };
-
-    $scope.cancel = function () {
-      $uibModalInstance.dismiss('cancel');
-    };
   });

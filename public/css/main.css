@@ -10,3 +10,9 @@ body{
 #comment {
   height: 25vh;
 }
+.btn-login, .btn-login:hover {
+    border-color: #101010;
+    background: #222;
+    border-color: #080808;
+    color: white;
+}

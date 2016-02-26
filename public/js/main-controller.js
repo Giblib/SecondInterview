@@ -15,18 +15,23 @@
     */
 
     vm.open = function (user) {
-
         var modalInstance = $uibModal.open({
           animation: true,
           templateUrl: 'myModalContent.html',
           controller: 'ModalInstanceCtrl',
           resolve: {
               user: function () {
-                console.log("vm.user", vm.user);
                   return vm.user;
               }
           }
-        });
+        }); //modalInstance
+
+        modalInstance.result.then(function (user) {
+            // Redirect to the logged-in function
+            vm.login(user);
+        }, function () {
+            // optional function. Do something if the user cancels.
+        }); //result
 
     };
 
@@ -37,11 +42,10 @@
     vm.isLoggedIn = localStorage.token || false;
 
     // User Authentication
-    vm.login = function(form) {
-      console.log("vm.log ran");
+    vm.login = function(user) {
       var params = {
-          "username": form.user.$viewValue,
-          "password": form.password.$viewValue
+          "username": user.username,
+          "password": user.password
         };
       $http({
           url: '/api/v1/authenticate',
@@ -88,26 +92,3 @@
   } //maincontroller fn
 })(); //iife
 
-// Please note that $uibModalInstance represents a modal window (instance) dependency.
-// It is not the same as the $uibModal service used above.
-
-angular.module('myapp').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, $log) {
-
-
-  $scope.ok = function () {
-    console.log("ok event");
-    $uibModalInstance.close();
-  };
-
-  $scope.cancel = function () {
-    console.log("cancel event");
-    $uibModalInstance.dismiss('cancel');
-  };
-
-  $scope.submit = function () {
-                  console.log("submit event");
-                  $log.log('Submiting user info.');
-                  $uibModalInstance.$log.log(JSON.stringify(user));
-                  $uibModalInstance.dismiss('cancel');
-              };
-});
