@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>GIBLIB: Second Interview</title>
   <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
   <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/angular-resource/angular-resource.js"></script>
   <script src="/bower_components/angular-route/angular-route.js"></script>
@@ -11,63 +12,93 @@
   <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="js/myapp.js"></script>
   <script src="js/main-controller.js"></script>
+  <script src="js/ui-controller.js"></script>
   <script src="js/resources/todo-resource.js"></script>
-  <style>
-    body{
-      background:
-        radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, 0.26)),
-        linear-gradient(108deg, #26D0CE, #1A2980 90%);
-    }
-    .outset {
-      border-style: outset;
-      width: 50vw;
-    }
-    #comment {
-      height: 25vh;
-    }
-  </style>
 </head>
-<body class="" ng-controller="MainController as vm">
+<body ng-controller="MainController as vm">
   <!--Navbar -->
-  <div class="container">
     <div class="header">
-      <div class="navbar navbar-inverse nav-pills pull-right" role="navigation">
+      <div class="navbar navbar-inverse nav-pills" role="navigation">
         <div class="container">
           <div class="navbar-header">
-
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-
             <a class="navbar-brand" >GIBLIB</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
             <!-- menu options only when loggedin -->
-            <ul class="nav navbar-nav" ng-show="vm.isLoggedIn">
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/comments">Messages</a></li>
-              <li><a ng-href="/" ng-click="vm.logout()">Logout</a></li>
+            <ul class="nav navbar-nav">
+              <li><a ng-href="" ng-click="vm.open({username: 'vm.user.username', password: 'vm.user.password'})" ng-hide="vm.isLoggedIn">Login</a></li>
+              <li><a ng-href="#/about" ng-show="vm.isLoggedIn">About</a></li>
+              <li><a ng-href="#/comments" ng-show="vm.isLoggedIn">Messages</a></li>
+              <li><a ng-href="/" ng-show="vm.isLoggedIn" ng-click="vm.logout()">Logout</a></li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-  </div>
   <!--navbar container -->
 
-  <!-- jumbotron -->
-  <div class="jumbotron text-center" ng-hide="vm.isLoggedIn">
-    <h1>GIBLIB: Second Interview</h1>
-    <h2>- View for non-authenticated user -</h2>
+
+  <!-- uibootstrap jumbotron testing -->
+  <div class="">
+    <div ng-controller="UICtrl" ng-hide="vm.isLoggedIn">
+      <div style="height: 100vh;" >
+        <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+          <uib-slide ng-repeat="slide in slides" active="slide.active" index="slide.id">
+            <img ng-src="{{slide.image}}" style="margin:auto;">
+            <div class="carousel-caption">
+              <h4>GIBLIB: Second Interview</h4>
+              <p>{{slide.text}}</p>
+            </div>
+          </uib-slide>
+        </uib-carousel>
+      </div>
+    </div>
   </div>
-  <!-- jumbotron -->
+  <!-- uibootstrap jumbotron testing -->
+
+  <!--modal login -->
+  <div ng-hide="vm.isLoggedIn">
+      <script type="text/ng-template" id="myModalContent.html">
+          <div class="modal-header">
+              <h3 class="modal-title"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> /SIGN IN</h3>
+          </div>
+          <form class="form" name="form" ng-submit="submit(vm.user)" novalidate>
+            <div class="modal-body" >
+              <p>DEMO Username: <strong>test</strong> ,Password: <strong>test</strong></p>
+              <span ng-bind="vm.loginerror" class="locked" style="color:#ff0000;"></span>
+              <div class="form-group">
+                <label>User Name</label>
+                <input type="text" name="user" placeholder="username" class="form-control" ng-model="vm.user.username" required>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="password" class="form-control" ng-model="vm.user.password" required>
+              </div>
+<!--               <div>
+                <button class="btn btn-inverse btn-lg btn-login" type="submit">
+                  Login
+                </button>
+              </div> -->
+              {{ vm.user.username }} {{ vm.user.password }}
+              <div class="modal-footer">
+                  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                  <input type="submit" class="btn primary-btn" value="Submit" />
+              </div>
+            </div>
+          </form>
+      </script>
+  </div>
+  <!--modal login -->
 
   <!-- Login Screen-->
-  <div class="well col-md-6 col-md-offset-3" ng-hide="vm.isLoggedIn">
+<!--   <div class="well col-md-6 col-md-offset-3" ng-hide="vm.isLoggedIn">
     <div class="row">
       <div class="col-sm-12">
         <h1 class="page-header"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> /SIGN IN</h1>
@@ -91,7 +122,7 @@
       </div>
     </div>
     <br>
-  </div>
+  </div> -->
   <!-- Login Screen -->
 
   <!-- views -->
