@@ -1,0 +1,19 @@
+body{
+  background-color: grey !important;
+}
+
+
+
+/*ANGULAR FORM VALUDATION RED for invalid GREEN for Valid*/
+
+input.ng-touched.ng-invalid {
+  
+  border: 3px solid #980000;
+
+}
+
+input.ng-touched.ng-valid {
+  
+  border: 3px solid #009900;
+
+}

@@ -12,11 +12,11 @@ GibLibAuth.prototype.init = function(secret, options) {
     this.secret = secret;
     this.options = typeof options != 'undefined' && Object.keys(options).length != 0 ? options : undefined;
 };
-
+//RECEIVE REQUEST from CLIENT
 GibLibAuth.prototype.authenticate = function() {
     var self = this;
 
-    return function(req, res, next) {
+    return function(req, res, next) {//receive request from client
 
         var user = {
             username: typeof req.body.username != 'undefined' ? req.body.username : typeof req.query.username != 'undefined' ? req.query.username : false,
@@ -31,7 +31,7 @@ GibLibAuth.prototype.authenticate = function() {
             });
 
         }
-        User.findOne({username: user.username }, function(err, obj) {
+        User.findOne({username: user.username }, function(err, obj) {//LOGIN
             if(obj.username !== null) {
                 obj.compass(user.password, function(err, match) {
                     if(err || !match) {
@@ -43,11 +43,11 @@ GibLibAuth.prototype.authenticate = function() {
 
                     var payload = obj.toJson();
 
-                    var token = jwt.sign(payload, this.secret, {
+                    var token = jwt.sign(payload, this.secret, { //token created:
                         expiresIn: 86400
                     });
 
-                    return res.status(200).send({
+                    return res.status(200).send({//structure of data from angular $http.post (coming from loginForm)
                         status: 'success',
                         message: 'Authentication success.',
                         token: token
@@ -71,7 +71,7 @@ GibLibAuth.prototype.authenticate = function() {
 
 };
 
-GibLibAuth.prototype.authorize = function() {
+GibLibAuth.prototype.authorize = function() {//request received-authorize it...
     var self = this;
 
     return function(req, res, next) {

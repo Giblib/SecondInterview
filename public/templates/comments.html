@@ -1,0 +1,11 @@
+<div id="container">
+    <h4>Comments</h4>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-4 col-xs-offset-4">
+            <div class="input-group">
+                <textarea ng-model="vm.text"class="form-control custom-control" rows="3" style="resize:none">{{vm.text}}</textarea>
+                <span ng-click="vm.sendComment()" class="input-group-addon btn btn-primary">Send</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -23,10 +23,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/v1/authenticate', auth.authenticate());
-app.use('/api/v1', auth.authorize(), routes.apiv1);
+app.use('/api/v1/authenticate', auth.authenticate());//auth route to use for $http.post
+app.use('/api/v1', auth.authorize(), routes.apiv1);//created post-
 
 app.use('/', function (req, res) {
     res.sendFile(path.join(__dirname, '/public/', 'index.html'));

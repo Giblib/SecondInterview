@@ -1,0 +1,66 @@
+
+<div id="container">
+<h4>Register</h4>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-4 col-xs-offset-4">
+<!--REGISTRATON FORM STARTS-->
+  <form class="registration-form" id="addregisterForm" ng-submit="theRegForm.$valid && registerForm.onSubmit(registerForm)" novalidate="novalidate" name="theRegForm">
+
+
+<!--user USERNAME INPUT-->
+    <div class="form-group" 
+        ng-class="{ 'has-error' : theRegForm.userName.$touched && theRegForm.userName.$invalid, 'has-success': theRegForm.userName.$touched && theRegForm.userName.$valid}">
+    <p><label for="userName">Name</label>
+       <input 
+        type="text" 
+        ng-model="registerForm.festName" 
+        class="register-inputs form-control" 
+        placeholder="Must be between 8 to 15 characters"
+        required="required" 
+        ng-minlength="4" ng-maxlength="15">
+     <p ng-show="theRegForm.userName.$invalid && !theRegForm.userName.$pristine"
+        class="help-block">Name is Required!.</p><!--bootstrap form validation classes-->
+        </p>
+    </div>
+
+<!--EMAIL INPUT--> 
+    <div class="form-group" 
+        ng-class="{'has-error':true}"> 
+    <p><label for="registerEmail">E-mail</label><input  
+        type="email" 
+        ng-model="registerForm.email"
+        class="register-inputs form-control" 
+        placeholder="Valid E-mail"
+        required="required" 
+        name="email"></p>
+     <p class="help-block" ng-show="addRegisterForm.$dirty && addRegisterForm.registerEmail.$invalid">Need to enter vailid email!</p>
+    </div>    
+
+
+<!--PASSWORD INPUT--> 
+    <div class="form-group" ng-class="{ 'has-error' : theRegForm.password.$invalid && !theRegForm.password.$pristine }">
+    <p><label for="password">Password</label>
+        <input 
+        type="password" 
+        ng-model="registerForm.passwordIn" 
+        class="register-inputs form-control"
+        required="required"  
+        placeholder="8 to 25 characters required"
+        ng-minlength="8" ng-maxlength="25"></input>
+        <p ng-show="theRegForm.password.$invalid && !theRegForm.password.$pristine" class="help-block">Password must be between 5 and 9 characters.</p>
+        </p>
+      </div>
+
+<!--Register BUTTON--> 
+
+      <button type="button" class="btn btn-default"><a class="logReg-buttons" ng-click="onSubmit()">Register</a></button>
+      <button type="button" class="btn btn-default"><a ui-sref="/login" class="register-link">Return to login screen</a></button>  
+        
+      <!--DEBUGGIN -->
+        <!--<pre>{{theRegForm | json}}</pre>-->
+ 
+ </form>
+</div>
+</div>
+
+</div>
