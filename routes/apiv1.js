@@ -1,5 +1,7 @@
 module.exports = function (Models, router) {
     var User = Models.User;
+    var Comment = Models.Comment;    
+
 
     router.get('/comments', function (req, res) {
         var query = {};
@@ -13,6 +15,7 @@ module.exports = function (Models, router) {
     });
 
     router.post('/comments', function (req, res) {
+
         if (typeof req.body == 'object') {
             Comment.create({
                 text: req.body.text,

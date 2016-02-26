@@ -6,14 +6,14 @@ angular.module( 'myApp', ['ui.router'])
     .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $httpProvider){
     // $httpProvider.interceptors.push('TokenInterceptor');
     $stateProvider
-      .state('/login', {
-        url:          'login',
+      .state('login', {
+        url:          '/login',
         templateUrl:  'templates/login.html',
         controller:   'LoginCtrl',
         controllerAs: 'vm'
       })
 
-     .state('/register', {
+     .state('register', {
         url:          '/register',
         templateUrl:  'templates/register.html',
         controller:   'RegisterCtrl',
@@ -21,7 +21,7 @@ angular.module( 'myApp', ['ui.router'])
 
       })
 
-     .state('/comments', {
+     .state('comments', {
         url:          '/comments',
         templateUrl:  'templates/comments.html',
         controller:   'CommentCtrl',

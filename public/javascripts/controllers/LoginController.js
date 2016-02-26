@@ -11,6 +11,9 @@
         if ($scope.theLoginForm.$valid) {
           // debugger;
 
+//Send to api -> api checks
+//if data is good - > api returns succcess --> caught by the success function
+//if data not good - > api returns error -> caught by the error function
           $http.post('http://localhost:8080/api/v1/authenticate', $scope.loginForm)
             .success(function(data) { //"data" is the object we receive from auth.js {status, message, token
 
