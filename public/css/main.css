@@ -16,3 +16,9 @@ body{
     border-color: #080808;
     color: white;
 }
+#profile-pic {
+    width: 35vh;
+    border-radius: 50%;
+    margin-top: 5vh;
+    border: 2px solid #fff;
+}
