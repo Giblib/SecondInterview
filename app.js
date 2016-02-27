@@ -23,7 +23,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'dist')));
+// changed from 'dist' to 'public'
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/api/v1/authenticate', auth.authenticate());
 app.use('/api/v1', auth.authorize(), routes.apiv1);

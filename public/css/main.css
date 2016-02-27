@@ -1,0 +1,24 @@
+body{
+  background:
+    radial-gradient(closest-corner, rgba(16, 47, 70, 0) 60%, rgba(16, 47, 70, 0.26)),
+    linear-gradient(108deg, #26D0CE, #1A2980 90%);
+}
+.outset {
+  border-style: outset;
+  width: 50vw;
+}
+#comment {
+  height: 25vh;
+}
+.btn-login, .btn-login:hover {
+    border-color: #101010;
+    background: #222;
+    border-color: #080808;
+    color: white;
+}
+#profile-pic {
+    width: 35vh;
+    border-radius: 50%;
+    margin-top: 5vh;
+    border: 2px solid #fff;
+}
