@@ -23,7 +23,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));//used to be dist
+app.use(express.static(path.join(__dirname, 'public')));//changed from dist
 
 app.use('/api/v1/authenticate', auth.authenticate());//auth route to use for $http.post
 app.use('/api/v1', auth.authorize(), routes.apiv1);//created post-

@@ -1,6 +1,6 @@
 module.exports = function (Models, router) {
     var User = Models.User;
-    var Comment = Models.Comment;    
+    var Comment = Models.Comment;//added
 
 
     router.get('/comments', function (req, res) {

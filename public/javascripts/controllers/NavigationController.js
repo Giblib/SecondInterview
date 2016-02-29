@@ -2,10 +2,15 @@
   'use strict';
 
   angular.module('myApp')
-    .controller('NavigationController', ['$state', NavigationController]); //.controller close
+    .controller('NavigationController', ['$state', '$http', NavigationController]);
 
-  function NavigationController($state) {
+  function NavigationController($state, $http) {
     var vm = this;
+
+
+    vm.userIsLoggedIn = function() {
+      return localStorage.isLoggedIn;
+    };
 
     vm.logout = function() {
       var answer = window.confirm('Are you sure you want to logout?');
@@ -13,10 +18,9 @@
         return false;
       }
       delete localStorage.giblibToken;
-      localStorage.isLoggedIn = false;
+      delete localStorage.isLoggedIn;
 
       $state.go('login');
-
     };
   }
 })();

@@ -1,46 +1,44 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular.module('myApp')
-        .controller('CommentCtrl',['$location', '$http', CommentCtrl]); //.controller close
-           
- function CommentCtrl($location, $http) {
-   var vm = this;
+  angular.module('myApp')
+    .controller('CommentCtrl', CommentCtrl);
 
-   vm.comments = [];
+  function CommentCtrl($http) {
+    var vm = this;
 
-   getComments();
+    vm.comments = [];
 
-   function getComments(){
-    $http.get('http://localhost:8080/api/v1/comments')
-    .success(function(postedComments){
-      vm.comments = postedComments;
-    }).error(function( error){
-      console.log('An error has occurred');
-      console.log(error);
-    });
-   }
-    //check if user is logged in localStorage.
-    if(!localStorage.isLoggedIn){
-      $location.path('login'); //if NOT return them to Login state..
-      return;
+    //for comments ng-if function 
+    if (localStorage.isLoggedIn) {
+      vm.userIsLoggedIn = true;
     }
 
-   vm.sendComment = function(){ //if not logged in.. you can't send comment.. 
-       $http.post('http://localhost:8080/api/v1/comments', {//check API URL
-        // comment: 'text'
+    getComments();
+
+    function getComments() {
+      $http.get('http://localhost:8080/api/v1/comments')
+        .success(function(postedComments) {
+          vm.comments = postedComments;
+        }).error(function(error) {
+          console.log('An error has occurred');
+          console.log(error);
+        });
+    }
+
+    vm.sendComment = function() {
+      $http.post('http://localhost:8080/api/v1/comments', {
         text: vm.text
-       }).success(function(){
+      }).success(function() {
         vm.comments.push({
           text: vm.text
         });
-       console.log("Comment Posted..");
-       }).error(function(error){
+        vm.text = '';
+        console.log("Comment Posted..");
+      }).error(function(error) {
         console.log(error);
-       });
-   };
- }
- 
- 
- 
+      });
+
+    };
+  }
 })(); //IIFE END

@@ -5,15 +5,16 @@
   angular.module('myApp')
     .factory('TokenInterceptor', function() {
 
-      var $http = $injector.get('$http'); //inject `$http` manually
-      return {
+      return {//adds token to EACH request. 
         request: function(config) {
 
           config.headers = config.headers || {};
 
           if (localStorage.isLoggedIn) {
-            config.headers.Authorization = 'Bearer ' + localStorage.giblibToken;
+            config.headers['x-access-token'] = localStorage.giblibToken;
           }
+
+          console.log('var injectory removed test')
 
           return config;
         }

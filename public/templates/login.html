@@ -1,12 +1,9 @@
 <div id="container">
-<h4>Login</h4>
+<h4>LOGIN</h4>
 <div class="row">
   <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-4 col-xs-offset-4">
 <!--LOGIN FORM w/ onSubmit function for loginController logic -->
-  <form class="login-form" id="loginForm" ng-submit="theLoginForm.$valid && loginForm.onSubmit(loginForm)" novalidate="novalidate" name="theLoginForm">
-  
-<!--     <h3 class="form-title">User Login</h3> -->
-    
+  <form class="login-form" id="loginForm" ng-submit="vm.onSubmit(theLoginForm)" novalidate name="theLoginForm">
 <!--Responsive form classes-->
   <!--username FIELD -->
       <div class="form-group" 
@@ -14,7 +11,7 @@
       <p><label for="username">Username</label>
         <input 
         type="text"
-        ng-model="loginForm.username" 
+        ng-model="vm.loginForm.username" 
         class="register-inputs form-control" 
         placeholder="enter username"    
         required="required">
@@ -22,7 +19,6 @@
         class="help-block">Name is Required!.</p><!--bootstrap form validation classes--> 
       </p>
       </div>
-
 <!--PASSWORD FIELD -->
       <div class="form-group" 
       ng-class="{ 'has-error' : theLoginForm.password.$touched && theLoginForm.password.$invalid, 'has-success': theLoginForm.password.$touched && theLoginForm.password.$valid}">
@@ -30,7 +26,7 @@
       <input 
         type="password"
         class="register-inputs form-control" 
-        ng-model="loginForm.password" 
+        ng-model="vm.loginForm.password" 
         required="required" 
         placeholder="enter password">     
         <p ng-show="theLoginForm.password.$invalid && !theLoginForm.password.$pristine"
@@ -38,8 +34,8 @@
       </div>
       
 <!--LOGIN button & Register Link-->
-        <button type="button" class="btn btn-default"><a href="#" class="logReg-buttons" ng-click="onSubmit()">login</a></button>
-        <button type="button" class="btn btn-default"><a ui-sref="/register" class="register-link">Register here!</a></button>
+        <button type="submit" class="btn btn-default">login</button>
+<!--         <button type="button" class="btn btn-default"><a ui-sref="/register" class="register-link">Register here!</a></button> -->
    
   </form>
 </div>

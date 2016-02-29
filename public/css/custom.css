@@ -1,8 +1,6 @@
 body{
-  background-color: grey !important;
+  background-color: black !important;
 }
-
-
 
 /*ANGULAR FORM VALUDATION RED for invalid GREEN for Valid*/
 
@@ -15,5 +13,20 @@ input.ng-touched.ng-invalid {
 input.ng-touched.ng-valid {
   
   border: 3px solid #009900;
+
+}
+
+.comments-row{
+margin-top: 5%;
+
+}
+
+li.comment-style{
+
+font-family: sans-serif;
+color: white;
+font-weight: 100;
+font-size: 14px;
+padding: 1%;
 
 }

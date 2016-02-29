@@ -77,6 +77,7 @@ GibLibAuth.prototype.authorize = function() {//request received-authorize it...
     return function(req, res, next) {
         req.user = {};
         var token = req.body.token || req.query.token || req.headers['x-access-token'] || false;
+        
         if (token) {
             jwt.verify(token, self.secret, function(err, decoded) {
                 if (err) {

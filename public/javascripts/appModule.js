@@ -4,7 +4,7 @@
 
 angular.module( 'myApp', ['ui.router'])
     .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $httpProvider){
-    // $httpProvider.interceptors.push('TokenInterceptor');
+    $httpProvider.interceptors.push('TokenInterceptor');
     $stateProvider
       .state('login', {
         url:          '/login',
