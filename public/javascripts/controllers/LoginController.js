@@ -29,6 +29,7 @@
 
               //use name instead as username is NOT defined?????
               console.log(data.message); //from auth.js Line 52
+              console.log(localStorage.giblibToken);
               $state.go('comments');
               
 

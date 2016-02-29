@@ -14,7 +14,7 @@
             config.headers['x-access-token'] = localStorage.giblibToken;
           }
 
-          console.log('var injectory removed test')
+          // console.log('var $injector removed test')
 
           return config;
         }
