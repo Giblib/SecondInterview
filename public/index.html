@@ -1,1 +1,61 @@
-<h1>It Works!</h1>
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Your description goes here">
+    <meta name="keywords" content="one, two, three">
+    <title>2nd Interview | ABEL</title>
+    <!-- external CSS link -->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- B O O T S T R A P  C D N-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style>body {font-family: Tahoma, Arial;}h1, h4, p {color: white;}#container {margin-left: 7%; margin-right: 7%;}</style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">ABEL</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse" ng-controller="NavigationController as vm">
+                <ul class="nav navbar-nav">
+                    <li><a ui-sref="comments">Comments</a></li>
+                    <li><a ui-sref="login" ng-if="!vm.userIsLoggedIn()">Login</a></li>
+                    <li><a ng-click="vm.logout()" ng-if="vm.userIsLoggedIn()" style="cursor:pointer;">Logout</a></li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+    </nav>
+    <div id="container">
+        <header>
+        </header>
+        <h3></h3>
+    </div><!--#container -->
+    <!-- *framework libraries* -->
+    <!-- jQUERY -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- ANGULARjs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <!-- UI-ROUTER - ANGULARjs -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+    <!-- BOOTSTRAP JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- A P P  LIBRARIES -->
+    <script src="javascripts/appModule.js"></script>
+    <script src="javascripts/controllers/RegistrationController.js"></script>
+    <script src="javascripts/controllers/LoginController.js"></script>
+    <script src="javascripts/controllers/CommentController.js"></script>
+    <script src="javascripts/controllers/NavigationController.js"></script>
+    <script src="javascripts/services/TokenInterceptor.js"></script>
+    <ui-view></ui-view>
+</body>
+</html>
