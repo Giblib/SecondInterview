@@ -14,7 +14,9 @@ GibLibAuth.prototype.init = function(secret, options) {
 };
 
 GibLibAuth.prototype.authenticate = function() {
+
     var self = this;
+    console.log('inside authenticate middleware');
 
     return function(req, res, next) {
 
@@ -66,6 +68,7 @@ GibLibAuth.prototype.authenticate = function() {
         }.bind(self));
 
         return false;
+        
 
     };
 
