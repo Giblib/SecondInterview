@@ -1,0 +1,15 @@
+<div>
+<div id='signin' ng-init='initFunc()'>
+  <h1>Comments Page</h1>
+
+  <h3>Submit Comment here</h3>
+  <form name="signinForm" ng-submit='postComment()'>
+    <input placeholder='write comment here' type='text' ng-model='comment.text'>
+  </form>
+  <div ng-repeat="data in comments">
+  	<div>{{data.text}}</div>
+  </div>
+ <div>
+<div><button ng-click='signOut()'>Signout?</button></div>
+<div>{{test}}</div>
+</div>

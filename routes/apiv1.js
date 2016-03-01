@@ -1,7 +1,9 @@
 module.exports = function (Models, router) {
     var User = Models.User;
+    var Comment = Models.Comment;
 
     router.get('/comments', function (req, res) {
+        console.log('inside comment enpoint');
         var query = {};
 
         Comment.find(query)
