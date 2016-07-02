@@ -1,0 +1,22 @@
+<section ng-if="!main.isAuthed()">
+	<h1>Welcome</h1>
+	<h3>Please login below</h3>
+	<form>
+	  <fieldset class="form-group">
+	    <label for="inputUsername">Username</label>
+	    <input type="text" class="form-control" id="inputUsername" placeholder="Enter Username" ng-model="main.username">
+	  </fieldset>
+	  <fieldset class="form-group">
+	    <label for="inputPassword">Password</label>
+	    <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="main.password">
+	  </fieldset>
+		<button ng-click="main.login()" class="btn btn-primary" ng-disabled="(!main.username || !main.password)">Login</button>
+	</form>
+	<br><br>
+	{{main.message}}
+</section>
+
+<section ng-if="main.isAuthed()">
+	<h2>You are logged in!</h2>
+	<a class="btn btn-lg btn-primary" href="#/comments">Proceed to the comments <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+</section>

@@ -23,17 +23,18 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'dist')));
+// app.use(express.static(path.join(__dirname, 'dist'))); // Grunt magic can happen later.
+app.use(express.static(__dirname + '/public')); 
 
 app.use('/api/v1/authenticate', auth.authenticate());
 app.use('/api/v1', auth.authorize(), routes.apiv1);
 
 app.use('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '/public/', 'index.html'));
+  res.sendFile(path.join(__dirname, '/public/', 'index.html'));
 });
 
 app.use('*', function (req, res) {
-    res.sendFile(path.join(__dirname, '/public/', 'index.html'));
+  res.sendFile(path.join(__dirname, '/public/', 'index.html'));
 });
 
 // catch 404 and forward to error handler

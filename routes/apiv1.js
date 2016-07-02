@@ -1,6 +1,7 @@
 module.exports = function (Models, router) {
     var User = Models.User;
-
+		var Comment = Models.Comment;
+		
     router.get('/comments', function (req, res) {
         var query = {};
 
