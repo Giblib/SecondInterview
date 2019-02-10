@@ -10,7 +10,8 @@ var config = require('./config/config');
 var app = express();
 app.set('x-powered-by', false);
 
-mongoose.connect(config.mongodb.uri, config.mongodb.opts);
+//mongoose.connect(config.mongodb.uri, config.mongodb.opts); //This way is deprecated
+mongoose.connect(config.mongodb.uri, { useMongoClient: true });
 
 var auth = require('./middleware/auth');
 var routes = require('./routes/');
@@ -21,12 +22,19 @@ auth.init(config.secret, config.options);
 //app.use(favicon(path.join(__dirname, 'dist', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'dist')));
+//app.use(express.static(path.join(__dirname, 'dist'))); //The is no directory dist
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/v1/authenticate', auth.authenticate());
-app.use('/api/v1', auth.authorize(), routes.apiv1);
+//app.use('/api/v1', auth.authorize(), routes.apiv1); //It always returns 404
+
+app.get('/api/comments', routes.apiv1);
+app.post('/api/comments/comment', routes.apiv1);
+app.post('/api/users/register', routes.apiv1);
+app.post('/api/v1/authorize', routes.apiv1);
+app.get('/seed', routes.apiv1);
 
 app.use('/', function (req, res) {
     res.sendFile(path.join(__dirname, '/public/', 'index.html'));

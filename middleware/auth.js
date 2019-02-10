@@ -46,7 +46,7 @@ GibLibAuth.prototype.authenticate = function() {
                     var token = jwt.sign(payload, this.secret, {
                         expiresIn: 86400
                     });
-
+                    
                     return res.status(200).send({
                         status: 'success',
                         message: 'Authentication success.',
