@@ -1,1 +1,55 @@
-<h1>It Works!</h1>
+<!doctype html>
+<html ng-app="boardApp">
+
+<head>
+    <title>Board</title>
+    <meta charset="utf-8">
+    <base href="/" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+
+
+<body ng-cloak>
+    <div class="container">
+        <nav class="navbar navbar-inverse" ng-controller="MainController">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="board">Board</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-show="userNavBar.show"><a href="#">{{userNavBar.name}}</a></li>
+                    <li ng-show="userNavBar.show"><a href ng-click="logout()">Log Out</a></li>
+                    <li ng-hide="userNavBar.show"><a href="register">Register</a></li>
+                    <li ng-hide="userNavBar.show"><a href="login">Log In</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <ng-view></ng-view>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-resource.min.js"></script>
+    <script src="index.js"></script>
+    <script src="/controllers/register.js"></script>
+    <script src="/controllers/login.js"></script>
+    <script src="/controllers/board.js"></script>
+    <script src="/services/authorizeService.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

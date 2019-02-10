@@ -1,0 +1,29 @@
+<div ng-controller="RegisterController" class="col-md-6 col-md-offset-3">
+    <h2>Register</h2>
+    <form name="registerForm">
+        <div class="form-group">
+            <label for="name">Full name</label>
+            <input type="text" name="name" id="name" class="form-control" ng-model="user.name"
+                required />
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class="form-control" ng-model="user.username"
+                required />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" ng-model="user.password"
+                required />
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="registerForm.$invalid" ng-click="registerUser(user, registerForm)"
+                class="btn btn-primary">Register</button>
+            <button type="button" ng-click="cancel(user)" class="btn btn-default">Cancel</button>
+        </div>
+    </form>
+    <hr>
+    <div style="text-align:center">
+        <a href="login" style="color: gray">Already have an account? <strong>Log In</strong>...</a>
+    </div>
+</div>
